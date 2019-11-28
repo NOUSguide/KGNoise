@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.author       = { "David Keegan" => "git@davidkeegan.com" }
   s.source       = { :git => "https://github.com/NOUSGuide/KGNoise.git", :tag => "1.2.2" }
   s.public_header_files = '*.h'
-  s.frameworks   = 'CoreGraphics', 'Foundation', 'UIKit'
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.10'
   s.source_files = 'KGNoise.{h,m}'
