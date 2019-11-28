@@ -311,7 +311,7 @@ static inline CGFloat *gradientComponentsForColors(NSColor *color1, NSColor *col
     CGColorSpaceRef baseSpace = CGColorSpaceCreateDeviceRGB();
     CGFloat *components = gradientComponentsForColors(self.alternateBackgroundColor, self.backgroundColor);    
     CGGradientRef gradient = CGGradientCreateWithColorComponents(baseSpace, components, NULL, 2);
-    CGColorSpaceRelease(baseSpace), baseSpace = NULL;
+    CGColorSpaceRelease(baseSpace); baseSpace = NULL;
     CGPoint startPoint;
     CGPoint endPoint;
     switch (self.gradientDirection) {
@@ -334,7 +334,7 @@ static inline CGFloat *gradientComponentsForColors(NSColor *color1, NSColor *col
             break;
     }
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
-    CGGradientRelease(gradient), gradient = NULL;
+    CGGradientRelease(gradient); gradient = NULL;
     CGContextRestoreGState(context);
     free(components);
     
@@ -383,11 +383,11 @@ static inline CGFloat *gradientComponentsForColors(NSColor *color1, NSColor *col
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGFloat *components = gradientComponentsForColors(self.alternateBackgroundColor, self.backgroundColor);
     CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, gradLocations, gradLocationsNum);
-    CGColorSpaceRelease(colorSpace), colorSpace = NULL;
+    CGColorSpaceRelease(colorSpace); colorSpace = NULL;
     CGPoint gradCenter= CGPointMake(round(CGRectGetMidX(bounds)), round(CGRectGetMidY(bounds)));
     CGFloat gradRadius = sqrt(pow((CGRectGetHeight(bounds)/2), 2) + pow((CGRectGetWidth(bounds)/2), 2));
     CGContextDrawRadialGradient(context, gradient, gradCenter, 0, gradCenter, gradRadius, kCGGradientDrawsAfterEndLocation);
-    CGGradientRelease(gradient), gradient = NULL;
+    CGGradientRelease(gradient); gradient = NULL;
     CGContextRestoreGState(context);
     free(components);
     
